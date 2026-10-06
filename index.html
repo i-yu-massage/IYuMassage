@@ -423,9 +423,9 @@
     <div class="container">
       <h2 class="section-title">Дипломи та кабінет</h2>
       <div class="gallery-grid">
-        <img src="cert1.jpg.jpg" alt="Диплом" style="width:100%; height:280px; object-fit:cover; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-<img src="cert2.jpg.png" alt="Сертифікат" style="width:100%; height:280px; object-fit:cover; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-<img src="cert3.jpg" alt="Сертифікат" style="width:100%; height:280px; object-fit:cover; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        <img src="cert1.jpg.jpg" alt="Диплом" class="clickable-img" style="width:100%; height:280px; object-fit:cover; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); cursor:pointer;">
+<img src="cert2.jpg.png" alt="Сертифікат" class="clickable-img" style="width:100%; height:280px; object-fit:cover; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); cursor:pointer;">
+<img src="cert3.jpg" alt="Сертифікат" class="clickable-img" style="width:100%; height:280px; object-fit:cover; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); cursor:pointer;">
       </div>
     </div>
   </section>
@@ -451,6 +451,26 @@
       </div>
     </div>
   </footer>
+<!-- Lightbox Modal -->
+<div id="imageModal" style="display:none; position:fixed; z-index:9999; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.85); align-items:center; justify-content:center; cursor:pointer;">
+  <span style="position:absolute; top:20px; right:35px; color:#fff; font-size:40px; font-weight:bold;">&times;</span>
+  <img id="modalImg" style="max-width:90%; max-height:90%; border-radius:8px; box-shadow: 0 0 20px rgba(255,255,255,0.2);">
+</div>
 
+<script>
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImg');
+
+  document.querySelectorAll('.clickable-img').forEach(img => {
+    img.addEventListener('click', function() {
+      modal.style.display = 'flex';
+      modalImg.src = this.src;
+    });
+  });
+
+  modal.addEventListener('click', function() {
+    modal.style.display = 'none';
+  });
+</script>
 </body>
 </html>
