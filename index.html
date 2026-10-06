@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I.yu.massage — Затишний масаж у Василькові</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #fdfbf7;
+      --bg-card: #ffffff;
+      --primary: #4a5d4e;
+      --primary-hover: #3b4b3e;
+      --accent: #d4a373;
+      --text-dark: #2c3531;
+      --text-muted: #6c757d;
+      --border-color: #e9ecef;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: rgba(253, 251, 247, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: blur(8px);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(212,163,115,0.08) 0%, rgba(253,251,247,0) 100%);
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s, transform 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Badge */
+    .badge-experience {
+      display: inline-block;
+      background: #e8efe9;
+      color: var(--primary);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    /* Price Section */
+    .pricing {
+      padding: 60px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 36px;
+      color: var(--primary);
+      margin-bottom: 40px;
+    }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .price-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .price-card h3 {
+      font-size: 22px;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .price-card p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .price-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 15px;
+      border-top: 1px dashed var(--border-color);
+    }
+
+    .duration {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .cost {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* Gallery / Diplomas */
+    .gallery {
+      padding: 60px 0;
+      background-color: #f7f4ee;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      background: #e2ddd5;
+      height: 200px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      border: 2px dashed #ccc;
+    }
+
+    /* Atmospheric Banner */
+    .banner {
+      padding: 80px 0;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      border-radius: 16px;
+      margin: 40px 0;
+    }
+
+    .banner h2 {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .banner p {
+      font-size: 18px;
+      margin-bottom: 25px;
+      opacity: 0.9;
+    }
+
+    /* Contacts */
+    .contacts {
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .wa { background-color: #25D366; }
+    .tg { background-color: #0088cc; }
+    .insta { background-color: #E1306C; }
+
+    /* Footer */
+    footer {
+      background-color: #2c3531;
+      color: #a0aab0;
+      padding: 40px 0 20px;
+      font-size: 13px;
+    }
+
+    .disclaimer {
+      border-top: 1px solid #3d4843;
+      padding-top: 20px;
+      margin-top: 20px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 36px; }
+      .header-content { flex-direction: column; gap: 10px; }
+      nav a { margin: 0 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <a href="#" class="logo">I.yu.massage</a>
+      <nav>
+        <a href="#services">Послуги</a>
+        <a href="#certificates">Дипломи</a>
+        <a href="#contacts">Контакти</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <span class="badge-experience">Понад 10 років досвіду</span>
+      <h1>Професійний масаж у Василькові</h1>
+      <p>Оздоровлення тіла, зняття напруги та відновлення сил у затишній атмосфері.</p>
+      <a href="https://booking.easyweek.com.ua/iyumassage" target="_blank" class="btn">Записатися онлайн</a>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing container" id="services">
+    <h2 class="section-title">Послуги та ціни</h2>
+    <div class="price-grid">
+      
+      <div class="price-card">
+        <h3>Класичний масаж спини</h3>
+        <p>Знімає напругу у верхній частині тіла та швидко перезавантажує (включає шийно-комірцеву зону і руки).</p>
+        <div class="price-meta">
+          <span class="duration">40 хв</span>
+          <span class="cost">900 ГРН</span>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <h3>ШКЗ (Шийно-комірцева зона)</h3>
+        <p>Допомагає розслабити м'язи, позбутися неприємних відчуттів у шиї, плечах та потилиці.</p>
+        <div class="price-meta">
+          <span class="duration">30 хв</span>
+          <span class="cost">400 ГРН</span>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <h3>Класичний загальний масаж</h3>
+        <p>Комплексний масаж усього тіла для розслаблення, покращення самопочуття та відновлення.</p>
+        <div class="price-meta">
+          <span class="duration">1 год 30 хв</span>
+          <span class="cost">2000 ГРН</span>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <h3>Класичний масаж обличчя</h3>
+        <p>Покращує кровообіг, тонус шкіри, знімає напругу та сприяє природному сяйву обличчя.</p>
+        <div class="price-meta">
+          <span class="duration">25 хв</span>
+          <span class="cost">600 ГРН</span>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <h3>Антицелюлітний ручний масаж</h3>
+        <p>Ручний масаж, що розгладжує шкіру, покращує її тонус і пружність, сприяє зменшенню проявів целюліту.</p>
+        <div class="price-meta">
+          <span class="duration">40 хв</span>
+          <span class="cost">1400 ГРН</span>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <h3>Букальний масаж обличчя</h3>
+        <p>Працює з м'язами обличчя зсередини, сприяє підтяжці шкіри, зменшує набряки та покращує контури обличчя.</p>
+        <div class="price-meta">
+          <span class="duration">40 хв</span>
+          <span class="cost">1200 ГРН</span>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <h3>Лімфодренажний масаж</h3>
+        <p>Покращує лімфообіг, зменшує набряклість, сприяє детоксикації та легкості в тілі.</p>
+        <div class="price-meta">
+          <span class="duration">1 год 30 хв</span>
+          <span class="cost">1700 ГРН</span>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <h3>Масаж ніг</h3>
+        <p>Знімає втому в ногах, покращує кровообіг і відновлює сили після насиченого дня.</p>
+        <div class="price-meta">
+          <span class="duration">30 хв</span>
+          <span class="cost">800 ГРН</span>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <h3>Масаж-Тепло</h3>
+        <p>Розслаблюючий масаж із використанням теплих банок. Допомагає тілу відпустити напругу та зігріває м'язи.</p>
+        <div class="price-meta">
+          <span class="duration">35 хв</span>
+          <span class="cost">400 ГРН</span>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <h3>Стоун масаж (гарячим камінням)</h3>
+        <p>Розслаблюючий масаж із використанням теплого каміння. Знімає стрес та дарує відчуття відновлення.</p>
+        <div class="price-meta">
+          <span class="duration">90 хв</span>
+          <span class="cost">1400 ГРН</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Atmospheric Banner -->
+  <div class="container">
+    <section class="banner">
+      <h2>Оберіть зручний час для візиту</h2>
+      <p>Забронюйте сеанс за декілька кліків через наш зручний календар</p>
+      <a href="https://booking.easyweek.com.ua/iyumassage" target="_blank" class="btn">Записатися на прийом</a>
+    </section>
+  </div>
+
+  <!-- Gallery / Diplomas Section -->
+  <section class="gallery" id="certificates">
+    <div class="container">
+      <h2 class="section-title">Дипломи та кабінет</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">Місце для диплома / сертифіката</div>
+        <div class="gallery-item">Місце для диплома / сертифіката</div>
+        <div class="gallery-item">Місце для фото кабінету</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacts Section -->
+  <section class="contacts container" id="contacts">
+    <h2 class="section-title">Контакти</h2>
+    <p><strong>Адреса:</strong> м. Васильків, вул. Декабристів, 60</p>
+    
+    <div class="social-links">
+      <a href="https://wa.me/380930353628" target="_blank" class="social-btn wa">WhatsApp</a>
+      <a href="https://t.me/iyumassage" target="_blank" class="social-btn tg">Telegram</a>
+      <a href="https://www.instagram.com/i.yu.massage" target="_blank" class="social-btn insta">Instagram</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p style="text-align: center;">© I.yu.massage. Всі права захищені.</p>
+      <div class="disclaimer">
+        Послуги мають оздоровчо-профілактичний та естетичний характер і не є медичними послугами. Перед проведенням процедур рекомендуємо переконатися у відсутності індивідуальних протипоказань.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
